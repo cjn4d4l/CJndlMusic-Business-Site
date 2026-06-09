@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Walter+Turncoat&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/violinist.png">
+    <link rel="stylesheet" href="/designs/style.css">
+    <title>cjndlmusic</title>
+</head>
+<body>
+    <header>
+        <h1 onclick="scrollToSection('main')" style="cursor: pointer;">CJndlMusic</h1>
+        <nav>
+            <button id="homebtn" class="navbtns" onclick="scrollToSection('main')">
+                Home
+            </button>
+            <button id="aboutbtn" class="navbtns" onclick="scrollToSection('about')">
+                About
+            </button>
+            <button class="navbtns">
+                Log-out
+            </button>
+        </nav>
+    </header>
+    <main id="main">
+        <div class="hero">
+            <img src="images/violinist.png" alt="pfp" class="image" id="pfp">
+            <h1>Hi, I'm CJ Nadal</h1>
+            <p>I'm an Aspiring Software Engineer with a Background in Music</p>
+            <button id="lessonbtn" class="navbtns" onclick="scrollToSection('bookLesson')">Book a Lesson</button>
+        </div>
+    </main>
+    <section class="about" id="about">
+        <h1 style="margin: 0.5in 1in 0.2in 4.2in;">About Me</h1>
+        <div class="panels">
+            <div class="panel_left">
+                <img src="" alt="pfp" id="second_pfp" class="second_pfp">
+            </div>
+            <div class="panel_right">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt ratione placeat, impedit est quos adipisci magnam quas nihil aliquam saepe, ea labore distinctio, ex explicabo a quibusdam? Excepturi, laborum consequuntur.</p>
+            </div>
+        </div>
+    </section>
+    <section id="bookLesson">
+        <br> <br>
+        <h1 style="margin: 0.5in 1in 0.2in 4.2in;">Music Lessons</h1>
+        <div class="panels">
+            <div class="lessonpanel">
+                <h3>One on One Violin Lessons</h3> <br>
+                <p style="text-align: justify;">Offering personalized lessons for beginners and aspiring musicians of all ages. Whether you’re picking up the violin for the first time or looking to improve your skills, I’m here to guide you every step of the way.</p>
+                <p>What I offer:</p> <br>
+                <ul style="margin-left: 30px;">
+                    <li>Beginner-Friendly lessons</li>
+                    <li>Proper technique & music fundamentals</li>
+                    <li>Fun and engaging practice sessions</li>
+                    <li>Flexible scheduling</li>
+                </ul> <br>
+                <p>Let’s turn your love for music into something beautiful. Book a lesson now!</p>
+            </div>
+            <div class="lessonpanel">
+                <center>
+                    <h3>Student Details</h3> <br>
+                    <form action="index.php" method="post">
+                        <label for="student_name">Student's Name</label> <br>
+                        <input type="text" name="student_name" id="student_name" placeholder="Students Fullname" required> <br>
+                        <p id="errorMessName"></p> <br>
+                        <label for="student_gmail">Gmail Address</label> <br>
+                        <input type="gmail" name="student_gmail" id="student_gmail" placeholder="example@gmail.com" required> <br>
+                        <p id="errorMessGmail" style="opacity: 0;">Invalid Gmail</p>
+                        <label for="instrument">Select Instrument</label> <br>
+                        <select name="instrument" id="instrument">
+                            <option value="Violin" default>Violin</option>
+                            <option value="Piano">Piano</option>
+                        </select> <br>
+                        <label for="level">Select Level</label> <br>
+                        <select name="level" id="level">
+                            <option value="Beginner" default>Beginner</option>
+                            <option value="Intermediete">Intermediete</option>
+                        </select> <br>
+                        <button type="submit" id="applybtn" name="applybtn">I'm Interested!</button>
+                    </form>
+                </center>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <center>
+            <a href="google.com"><img src="images/facebook.png" alt="facebook" style="width: 50px;"></a>
+            <p id="footerCreds">@ CJndlMusic 2026 <br> All Rights Reserved</p>
+        </center>
+    </footer>
+    <script src="home.js"></script>
+</body>
+</html>
