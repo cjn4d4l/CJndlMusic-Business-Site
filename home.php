@@ -231,7 +231,9 @@ $loggedin = $_SESSION['loggedin'] ?? false;
             </h2>
             <h1>Hi, I'm CJ Nadal</h1>
             <p>I'm an Aspiring Software Engineer with a Background in Music <br> I'm mainly a violinist playing on events</p>
+            <?php if ($loggedin) { ?>
             <button id="lessonbtn" class="navbtns" onclick="scrollToSection('bookLesson')">Book a Lesson</button>
+            <?php } ?>
         </div>
     </main>
     <hr>
@@ -243,8 +245,9 @@ $loggedin = $_SESSION['loggedin'] ?? false;
             </div>
             <div class="panel_right">
                 <p>
-                    I am Christian James Nadal Tejolan, call me CJ for short, 20 years old, i come from
-                    Pili, Looc, Romblon taking up Bachelor of Science in Information Technology at the College of Computing, Multimedia Arts and Digital Innovation in Romblon State University, I am an aspiring
+                    I am Christian James Nadal Tejolan, call me CJ for short, 20 years old, i am taking up Bachelor of 
+                    Science in Information Technology at the College of Computing, Multimedia Arts and Digital Innovation 
+                    in Romblon State University, I am an aspiring
                     developer and software engineer, aside from that, I want to become a Music Instructor teaching
                     violin and piano.
                 </p>
@@ -329,6 +332,7 @@ $loggedin = $_SESSION['loggedin'] ?? false;
             const student_gmail = document.getElementById("student_gmail").value;
             let errorMessName = document.getElementById("errorMessName");
             let errorMessGmail = document.getElementById("errorMessGmail");
+            document.getElementById("response").innerHTML = "";
             if (student_name.trim() === "") {
                 applybtn.disabled = true;
                 errorMessName.innerHTML = "Name Should not be empty";
@@ -371,6 +375,7 @@ $loggedin = $_SESSION['loggedin'] ?? false;
 
         // AJAX functionalities
         document.getElementById("logoutbtn").addEventListener("click", function() {
+            console.log("gumana");
             fetch('logout.php');
             window.location.href = 'index.php';
         });

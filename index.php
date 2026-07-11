@@ -71,14 +71,14 @@
                     $password = $_POST['password'] ?? "";
                     $notfound = true;
                     if (!(empty($username) || empty($password))) {
-                        $_SESSION["username"] = $username;
-                        $_SESSION["loggedin"] = true;
                         $sql = "SELECT * FROM users";
                         $result = mysqli_query($db_connection, $sql);
 
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
                                 if (in_array($username, $row) && in_array($password, $row)) {
+                                    $_SESSION["username"] = $username;
+                                    $_SESSION["loggedin"] = true;
                                     $notfound = false;
                                     if ($username == "admin" && $password == "admin") {
                                         header("Location: admin.php");
