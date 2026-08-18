@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Walter+Turncoat&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="images/violinist.png">
+    <title>cjndlmusic</title>
+</head>
+<!-- PAGE STYLE SECTION -->
+<style>
+    * {
+        font-family: "Outfit", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 10px;
+        font-style: normal;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    header {
+        background-color: white;
+        width: 100%;
+        height: 100px;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        border-bottom: solid 2px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+    }
+
+    header h1 {
+        margin-left: 10px;
+    }
+
+    nav button {
+        margin-right: 20px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    main {
+        background-color: rgb(250, 250, 250);
+        width: 100%;
+        height: calc(100vh - 80px);
+        display: grid;
+        place-items: center;
+        position: sticky;
+    }
+
+    .hero {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .image {
+        width: 200px;
+        height: 200px;
+        margin: auto;
+        transition: ease-in-out 0.3s;
+    }
+
+    #lessonbtn {
+        background-color: white;
+        width: 100px;
+        height: 50px;
+        margin: 5px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: ease-in-out 0.3s;
+    }
+
+    #lessonbtn:hover {
+        background-color: burlywood;
+        transform: translateY(-5px);
+    }
+
+    .about {
+        background-color: white;
+        margin: auto;
+        width: 100%;
+        gap: 20px;
+        padding: 20px;
+        padding-bottom: 30px;
+        position: sticky;
+    }
+
+    .panels {
+        display: grid;
+        grid-template-columns: minmax(280px, 1.2fr) minmax(220px, 0.8fr);
+        align-items: center;
+        justify-content: space-around;
+        margin: 0 auto;
+        gap: 30px;
+        width: min(100%, 900px);
+        max-width: 900px;
+        height: auto;
+    }
+
+    .panel_left {
+        background-color: rgb(255, 255, 255);
+        width: 100%;
+        max-width: 400px;
+        justify-self: center;
+    }
+
+    .second_pfp {
+        display: block;
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        justify-content: center;
+        border-radius: 10px;
+    }
+
+    #second_pfp {
+        transition: ease-in-out 0.5s;
+    }
+
+    .panel_right {
+        background-color: rgb(255, 255, 255);
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        text-align: justify;
+    }
+
+    #bookLesson {
+        background-color: rgb(250, 250, 250);
+        margin: auto;
+        width: 100%;
+        height: auto;
+        position: sticky;
+        padding: 40px;
+    }
+
+    .lessonpanel {
+        background-color: rgb(255, 255, 255);
+        border: solid 2px;
+        border-radius: 10px;
+        width: 60vw;
+        padding: 20px;
+        margin: 5vh auto;
+    }
+
+    input {
+        width: 100%;
+        height: 30px;
+        margin: 0px 0px 20px 0px;
+        border-radius: 5px;
+    }
+
+    select {
+        width: 100%;
+        height: 30px;
+        margin: 0px 0px 20px 0px;
+        border-radius: 5px;
+    }
+
+    #applybtn {
+        background-color: white;
+        width: 200px;
+        height: 50px;
+        margin: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: ease-in-out 0.3s;
+    }
+
+    #applybtn:hover {
+        background-color: burlywood;
+        transform: translateY(-5px);
+    }
+
+    .navbtns, .formBtns {
+        background-color: white;
+        width: 70px;
+        height: 50px;
+        margin: 5px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: ease-in-out 0.3s;
+    }
+
+    .navbtns:hover, .formBtns:hover {
+        background-color: burlywood;
+        transform: translateY(-5px);
+    }
+
+    #enrollForm {
+        margin: 10vh auto;
+        width: 330px;
+        border: none;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    footer {
+        background-color: white;
+        width: 100%;
+        height: 300px;
+        position: sticky;
+        padding-top: 180px;
+    }
+</style>
+<!-- END OF PAGE STYLE SECTION -->
+
+<body id="main">
+    <header>
+        <h1 onclick="scrollToSection('main')" style="cursor: pointer;">CJndlMusic</h1>
+        <nav>
+            <button class="navbtns" onclick="scrollToSection('main')">
+                Home
+            </button>
+            <button class="navbtns" onclick="scrollToSection('about')">
+                About
+            </button>
+        </nav>
+    </header>
+    <main>
+        <div class="hero">
+            <img src="images/violinist.png" alt="pfp" class="image" id="pfp">
+            <h1>Hi, I'm CJ Nadal</h1>
+            <p>I'm an Aspiring Software Engineer with a Background in Music <br> I'm mainly a violinist playing on
+                events</p>
+            <button id="lessonbtn" onclick="scrollToSection('bookLesson')">Book a Lesson</button>
+        </div>
+    </main>
+    <hr>
+    <section class="about" id="about">
+        <center>
+            <h1 style="margin: 0.5in 0in 0.2in 0in; text-align:center;">About Me</h1>
+            <div class="panels">
+                <div class="panel_left">
+                    <img src="" alt="pfp" id="second_pfp" class="second_pfp">
+                </div>
+                <div class="panel_right">
+                    <p>
+                        I am Christian James Nadal Tejolan, call me CJ for short, 20 years old, i am taking up Bachelor
+                        of
+                        Science in Information Technology at the College of Computing, Multimedia Arts and Digital
+                        Innovation
+                        in Romblon State University, I am an aspiring
+                        developer and software engineer, aside from that, I want to become a Music Instructor teaching
+                        violin and piano.
+                    </p>
+                </div>
+            </div>
+        </center>
+    </section>
+    <hr>
+    <section id="bookLesson">
+        <h1 style="text-align:center; margin-bottom: 20px;">Music Lessons</h1>
+        <div class="lessonpanel">
+            <h3>One on One Violin Lessons</h3> <br>
+            <p style="text-align: justify;">Offering personalized lessons for beginners and aspiring musicians
+                of
+                all ages. Whether you’re picking up the violin for the first time or looking to improve your
+                skills,
+                I’m here to guide you every step of the way.</p>
+            <p>What I offer:</p> <br>
+            <ul style="margin-left: 30px;">
+                <li>Beginner-Friendly lessons</li>
+                <li>Proper technique & music fundamentals</li>
+                <li>Fun and engaging practice sessions</li>
+                <li>Flexible scheduling</li>
+            </ul> <br>
+            <p>Let’s turn your love for music into something beautiful. Book a lesson now!</p>
+            <center>
+                <button id="applybtn" onclick="openDialog('enrollForm')">I'm Interested!</button>
+            </center>
+        </div>
+    </section>
+    <hr>
+    <footer>
+        <center>
+            <a href="https://www.facebook.com/cjn4d4l" target="_blank"><img src="images/facebook.png" alt="facebook"
+                    style="width: 50px;"></a>
+            <p id="footerCreds">@ CJndlMusic <br> All Rights Reserved</p>
+        </center>
+    </footer>
+    <dialog id="enrollForm">
+        <center>
+            <h3>Student Details</h3> <br>
+            <label for="student_name">Student's Name</label> <br>
+            <input type="text" name="student_name" id="student_name" placeholder="Students Fullname" required>
+            <br>
+            <p style="color: red;" id="errorMessName"></p> <br>
+            <label for="student_gmail">Gmail Address</label> <br>
+            <input type="gmail" name="student_gmail" id="student_gmail" placeholder="example@gmail.com" required> <br>
+            <p id="errorMessGmail" style="color: red;"></p>
+            <label for="instrument">Select Instrument</label> <br>
+            <select name="instrument" id="instrument">
+                <option value="Violin" default>Violin</option>
+                <option value="Piano">Piano</option>
+            </select> <br>
+            <label for="level">Select Level</label> <br>
+            <select name="level" id="level">
+                <option value="Beginner" default>Beginner</option>
+                <option value="Intermediete">Intermediete</option>
+            </select> <br>
+            <button class="formBtns" onclick="closeDialog('enrollForm')">Cancel</button>
+            <button class="formBtns" id="submitForm">Submit</button>
+            <p id="response"></p>
+        </center>
+    </dialog>
+    <script src="index.js"></script>
+</body>
+
+</html>
