@@ -41,40 +41,27 @@ function imageSlider() {
 
 document.addEventListener("DOMContentLoaded", imageSlider); // DOMContentLoaded event, fires when the html file is load
 
-function clearForm() {
-    document.getElementById("student_name").value = "";
-    document.getElementById("student_gmail").value = "";
-}
-
-let students = [];
-
-document.getElementById("submitForm").addEventListener("click", () => {
-    students = JSON.parse(localStorage.getItem("students") || '[]');
-    const student = {
-        student_name: document.getElementById("student_name").value.trim(),
-        gmail: document.getElementById("student_gmail").value,
-        instrument: document.getElementById("instrument").value,
-        level: document.getElementById("level").value
+const message_p = document.getElementById("message")
+document.getElementById("applybtn").addEventListener("click", () => {
+    message_p.innerText = "Sending...";
+    const message = {
+        sender: document.getElementById("sender").value,
+        content: document.getElementById("content").value
     }
 
-    if (student.student_name === '') {
-        document.getElementById("errorMessName").innerHTML = "Name Cannot be Empty";
+    if (!message.content) {
         return;
     }
 
-    if (student.gmail === '') {
-        document.getElementById("errorMessGmail").innerHTML = "Gmail Cannot be Empty";
-        return;
-    }
-    students.push(student);
-    localStorage.setItem("students", JSON.stringify(students));
-    document.getElementById("response").innerHTML = "Success";
-})
-
-document.getElementById("student_name").addEventListener("input", () => {
-    document.getElementById("errorMessName").innerHTML = "";
-})
-
-document.getElementById("student_gmail").addEventListener("input", () => {
-    document.getElementById("errorMessGmail").innerHTML = "";
+    fetch("https://personalsite-api.fastapicloud.dev/sendFeedback", {
+        method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(message)
+    }).then(response => response.json()).then(data => {
+        document.getElementById("sender").value = "";
+        document.getElementById("content").value = "";
+        if (data.status) {
+            message_p.innerText = data.message;
+        } else {
+            message_p.innerText = "Failed to Send Message"
+        }
+    })
 })
